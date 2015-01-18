@@ -20,7 +20,7 @@
     "url": "https://github.com/crypto-browserify/randombytes/issues"
   },
   "homepage": "https://github.com/crypto-browserify/randombytes",
-  "browser": "randomBytes.js",
+  "browser": "browser.js",
   "devDependencies": {
     "tap-spec": "^2.1.2",
     "tape": "^3.0.3"
