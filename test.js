@@ -19,3 +19,9 @@ test('async', function (t) {
       t.equals(resp.length, 300, 'len: ' + 300);
     });
 });
+if (process.browser) {
+  test('requesting to much throws', function (t) {
+    t.plan(1);
+    t.throws(randomBytes.bind(null, 65537));
+  });
+}
