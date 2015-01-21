@@ -1,7 +1,7 @@
 'use strict';
 
 var crypto = global.crypto || global.msCrypto
-if(crypto.getRandomValues) {
+if(crypto && crypto.getRandomValues) {
   module.exports = randomBytes;
 } else {
   module.exports = oldBrowser;
