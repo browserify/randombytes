@@ -8,17 +8,27 @@ test('sync', function (t) {
     t.equals(randomBytes(300).length, 300, 'len: ' + 300);
 });
 test('async', function (t) {
-    t.plan(3);
-    randomBytes(3, function (err, resp) {
-      t.equals(resp.length, 3, 'len: ' + 3);
-    });
-    randomBytes(30, function (err, resp) {
-      t.equals(resp.length, 30, 'len: ' + 30);
-    });
-    randomBytes(300, function (err, resp) {
-      t.equals(resp.length, 300, 'len: ' + 300);
-    });
-});
+  t.plan(3)
+
+  randomBytes(3, function (err, resp) {
+    if (err) throw err
+
+    t.equals(resp.length, 3, 'len: ' + 3)
+  })
+
+  randomBytes(30, function (err, resp) {
+    if (err) throw err
+
+    t.equals(resp.length, 30, 'len: ' + 30)
+  })
+
+  randomBytes(300, function (err, resp) {
+    if (err) throw err
+
+    t.equals(resp.length, 300, 'len: ' + 300)
+  })
+})
+
 if (process.browser) {
   test('requesting to much throws', function (t) {
     t.plan(1);
