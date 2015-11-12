@@ -33,13 +33,17 @@ test('async', function (t) {
 if (process.browser) {
   test('requesting to much throws', function (t) {
     t.plan(1)
-    t.throws(randomBytes.bind(null, 65537))
+    t.throws(function () {
+      randomBytes(65537)
+    })
   })
 
   test('requesting to much throws async', function (t) {
     t.plan(1)
-    t.throws(randomBytes.bind(null, 65537, function () {
-      t.ok(false, 'should not get here')
-    }))
+    t.throws(function () {
+      randomBytes(65537, function () {
+        t.ok(false, 'should not get here')
+      })
+    })
   })
 }
