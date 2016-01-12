@@ -14,10 +14,8 @@ if (crypto && crypto.getRandomValues) {
 
 function randomBytes (size, cb) {
   // phantomjs needs to throw
-  if (size > 65536) {
-    throw new Error('requested too many random bytes')
-  }
-  // in case browserify  isn't use the Uint8Array version
+  if (size > 65536) throw new Error('requested too many random bytes')
+  // in case browserify  isn't using the Uint8Array version
   var rawBytes = new global.Uint8Array(size)
 
   // This will not work in older browsers.
