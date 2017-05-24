@@ -29,5 +29,8 @@
     "tap-spec": "^2.1.2",
     "tape": "^3.0.3",
     "zuul": "^3.7.2"
+  },
+  "dependencies": {
+    "safe-buffer": "^5.0.1"
   }
 }
