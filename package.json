@@ -25,9 +25,9 @@
   "browser": "browser.js",
   "devDependencies": {
     "phantomjs": "^1.9.9",
-    "standard": "^3.3.0",
+    "standard": "^10.0.2",
     "tap-spec": "^2.1.2",
-    "tape": "^3.0.3",
+    "tape": "^4.6.3",
     "zuul": "^3.7.2"
   },
   "dependencies": {
