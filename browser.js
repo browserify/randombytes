@@ -32,8 +32,9 @@ function randomBytes (size, cb) {
   if (size > 0) {  // getRandomValues fails on IE if size == 0
     if (size > MAX_BYTES) {
       for (var generated = 0; generated < size; generated += MAX_BYTES) {
-        var nextChunk = generated + MAX_BYTES > size ? size - generated : MAX_BYTES
-        crypto.getRandomValues(bytes.slice(generated, generated + nextChunk))
+        // buffer.slice automatically checks if the end is past the end of
+        // the buffer so we don't have to here
+        crypto.getRandomValues(bytes.slice(generated, generated + MAX_BYTES))
       }
     } else {
       crypto.getRandomValues(bytes)
