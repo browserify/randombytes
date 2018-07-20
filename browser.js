@@ -24,13 +24,14 @@ if (crypto && crypto.getRandomValues) {
 function randomBytes (size, cb) {
   // phantomjs needs to throw
   if (size > MAX_UINT32) throw new Error('requested too many random bytes')
-  // in case browserify  isn't using the Uint8Array version
+
   var bytes = Buffer.allocUnsafe(size)
 
-  // This will not work in older browsers.
-  // See https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues
+
   if (size > 0) {  // getRandomValues fails on IE if size == 0
-    if (size > MAX_BYTES) {
+
+    if (size > MAX_BYTES) { // this is the max bytes crypto.getRandomValues
+      // can do at once see https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues
       for (var generated = 0; generated < size; generated += MAX_BYTES) {
         // buffer.slice automatically checks if the end is past the end of
         // the buffer so we don't have to here
