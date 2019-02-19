@@ -23,7 +23,7 @@ if (crypto && crypto.getRandomValues) {
 
 function randomBytes (size, cb) {
   // phantomjs needs to throw
-  if (size > MAX_UINT32) throw new Error('requested too many random bytes')
+  if (size > MAX_UINT32) throw new RangeError('requested too many random bytes')
 
   var bytes = Buffer.allocUnsafe(size)
 
