@@ -48,3 +48,5 @@ function randomBytes (size, cb) {
 
   return bytes
 }
+
+export default randomBytes
