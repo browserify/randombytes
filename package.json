@@ -3,6 +3,8 @@
   "version": "2.1.0",
   "description": "random bytes from browserify stand alone",
   "main": "index.js",
+  "module": "browser.js",
+  "browser": "browser.js",
   "scripts": {
     "test": "standard && node test.js | tspec",
     "phantom": "zuul --phantom -- test.js",
@@ -22,7 +24,6 @@
     "url": "https://github.com/crypto-browserify/randombytes/issues"
   },
   "homepage": "https://github.com/crypto-browserify/randombytes",
-  "browser": "browser.js",
   "devDependencies": {
     "phantomjs": "^1.9.9",
     "standard": "^10.0.2",
