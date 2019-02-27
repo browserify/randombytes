@@ -8,8 +8,17 @@ var MAX_BYTES = 65536
 // https://github.com/nodejs/node/blob/master/lib/internal/crypto/random.js#L48
 var MAX_UINT32 = 4294967295
 
-function oldBrowser () {
-  throw new Error('Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11')
+function oldBrowser (size, cb) {
+  for (var bytes = []; size > 0; size--)
+    bytes.push(Math.floor(Math.random() * 256));
+
+  if (typeof cb === 'function') {
+    return process.nextTick(function () {
+      cb(null, bytes)
+    })
+  }
+
+  return bytes;
 }
 
 var Buffer = require('safe-buffer').Buffer
