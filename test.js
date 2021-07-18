@@ -1,5 +1,5 @@
 const test = require('tape')
-const randomBytes = require('./')
+const randomBytes = require('./index.js')
 const MAX_BYTES = 65536
 const MAX_UINT32 = 4294967295
 
