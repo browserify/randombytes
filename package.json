@@ -24,7 +24,6 @@
   "homepage": "https://github.com/crypto-browserify/randombytes",
   "browser": "browser.js",
   "devDependencies": {
-    "phantomjs": "^1.9.9",
     "standard": "^10.0.2",
     "tap-spec": "^2.1.2",
     "tape": "^4.6.3",
