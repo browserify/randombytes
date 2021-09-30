@@ -13,7 +13,7 @@ function oldBrowser () {
 }
 
 var Buffer = require('safe-buffer').Buffer
-var crypto = global.crypto || global.msCrypto
+var crypto = globalThis.crypto || globalThis.msCrypto
 
 if (crypto && crypto.getRandomValues) {
   module.exports = randomBytes
