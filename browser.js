@@ -14,7 +14,7 @@ function oldBrowser () {
 
 var Buffer = require('safe-buffer').Buffer
 
-if(typeof globalThis !== 'undefined') {
+if (typeof globalThis !== 'undefined') {
   var crypto = globalThis.crypto || globalThis.msCrypto
 } else {
   var crypto = global.crypto || global.msCrypto
