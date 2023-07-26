@@ -12,7 +12,8 @@ function oldBrowser () {
   throw new Error('Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11')
 }
 
-const crypto = global.crypto || global.msCrypto
+const _global = typeof globalThis !== 'undefined' ? globalThis : global
+const crypto = _global.crypto || _global.msCrypto
 
 if (crypto && crypto.getRandomValues) {
   module.exports = randomBytes
