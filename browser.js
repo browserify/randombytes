@@ -8,20 +8,14 @@ const MAX_BYTES = 65536
 // https://github.com/nodejs/node/blob/master/lib/internal/crypto/random.js#L48
 const MAX_UINT32 = 4294967295
 
-function oldBrowser () {
-  throw new Error('Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11')
-}
+export function randomBytes (size, cb) {
+  const _global = typeof globalThis !== 'undefined' ? globalThis : global
+  const crypto = _global.crypto || _global.msCrypto
 
-const _global = typeof globalThis !== 'undefined' ? globalThis : global
-const crypto = _global.crypto || _global.msCrypto
+  if (!crypto || !crypto.getRandomValues) {
+    throw new Error('Secure random number generation is not supported by this browser.\nUse Chrome, Firefox or Internet Explorer 11')
+  }
 
-if (crypto && crypto.getRandomValues) {
-  module.exports = randomBytes
-} else {
-  module.exports = oldBrowser
-}
-
-function randomBytes (size, cb) {
   // phantomjs needs to throw
   if (size > MAX_UINT32) throw new RangeError('requested too many random bytes')
 

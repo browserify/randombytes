@@ -28,5 +28,6 @@
     "tap-spec": "^5.0.0",
     "tape": "^5.2.2",
     "zuul": "^3.12.0"
-  }
+  },
+  "sideEffects": false
 }
